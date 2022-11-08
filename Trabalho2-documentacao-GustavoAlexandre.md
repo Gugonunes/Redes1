@@ -1,9 +1,9 @@
 # Trabalho 2: Integração de habilidades - 2022/1
 **Disciplina: Redes de Computadores**
 
-**Curso: Engenharia de Computação / Elétrica**
+**Curso: Engenharia de Computação**
 
-Gustavo Alexandre / 1697927
+**Gustavo Alexandre / 1697927**
 
 
 ## Tarefa 1:  Sub-Redes
