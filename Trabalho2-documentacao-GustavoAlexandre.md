@@ -5,6 +5,7 @@
 
 **Gustavo Alexandre / 1697927**
 
+## A conversão para pdf causava problemas de visualização, como algumas tabelas cortadas. Portando decidi deixar em .md mesmo.
 
 ## Tarefa 1:  Sub-Redes
 | Sub- Rede |             IPv6 - Sub-Rede            |  IPv4 - Sub-Rede  |  IPv4 - Máscara   | IPv4 - Broadcast  |    
