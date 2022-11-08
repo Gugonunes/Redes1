@@ -146,19 +146,3 @@ Gustavo Alexandre / 1697927
 | 2001:0DB8:ACAD:1BFF::1:0/112 | 2001:0DB8:ACAD:1BFF::4:1 | Fa0/1   |
 | 2001:0DB8:ACAD:1BFF::2:0/112 | 2001:0DB8:ACAD:1BFF::4:1 | Fa0/1   |
 | 2001:0DB8:ACAD:1BFF::3:0/112 | 2001:0DB8:ACAD:1BFF::4:1 | Fa0/1   |
-
-## Topologia - Packet Tracer
-- [ ] ![Trabalho2-Topologia-NomeAluno](trabalho2-topologia-NomeAluno.pkt)
-
-
-## Arquivos de Configuração dos Dispositivos Intermediários (roteadores e switches)
-- [ ] ![Roteador Pato Branco](r-pb-nnn.pkt)
-- [ ] ![Roteador Francisco Beltrão](r-fb-nnn.pkt)
-- [ ] ![Roteador Vitorino](r-vit-nnn.pkt)
-- [ ] ![Roteador Itapejara D'Oeste](r-ita-nnn.pkt)
-- [ ] ![Roteador Coronel Vivida](r-cv-nnn.pkt)
-- [ ] ![Switch Pato Branco](sw-pb-nnn.pkt)
-- [ ] ![Switch Francisco Beltrão](sw-fb-nnn.pkt)
-- [ ] ![Switch Coronel Vivida](sw-cv-nnn.pkt)
-
-
