@@ -1,0 +1,277 @@
+***********SWITCHES********
+----MATRIZ----
+enable
+conf t
+hostname SW-Matriz-GA 
+ip default-gateway 200.200.27.1
+interface vlan 1
+ip address 200.200.27.2 255.255.255.192
+no shutdown
+----Filial1----
+enable
+conf t
+hostname SW-Filial1-GA 
+ip default-gateway 200.200.27.65
+interface vlan 1
+ip address 200.200.27.66 255.255.255.224
+no shutdown
+----Filial2----
+enable
+conf t
+hostname SW-Filial2-GA 
+ip default-gateway 200.200.27.97
+interface vlan 1
+ip address 200.200.27.98 255.255.255.224
+no shutdown
+
+***********ROTEADORES********
+----PATO BRANCO----
+enable
+conf t
+hostname R-PB-GA
+interface fa0/0
+description LAN-MATRIZ
+ip address 200.200.27.1 255.255.255.192
+ipv6 address 2001:DB8:ACAD:1B00::1/64
+ipv6 address  FE80::1 link-local
+no shutdown
+interface serial 0/0/0
+description WAN-PB-VIT
+clock rate 56000
+ip address 200.200.27.225 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::0:1/112
+no shutdown
+interface serial 0/0/1
+description WAN-PB-IT
+ip address 200.200.27.238 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::3:2/112
+no shutdown
+exit
+ipv6 unicast-routing 
+ip route 200.200.27.64   255.255.255.224  200.200.27.226  
+ip route 200.200.27.228  255.255.255.252  200.200.27.226  
+ip route 200.200.27.232  255.255.255.252  200.200.27.226  
+ip route 200.200.27.240  255.255.255.252  200.200.27.226   
+ip route 200.200.27.96   255.255.255.224  200.200.27.226  
+ipv6 route 2001:0DB8:ACAD:1B01::/64      2001:0DB8:ACAD:1BFF::2 
+ipv6 route 2001:0DB8:ACAD:1B02::/64      2001:0DB8:ACAD:1BFF::2 
+ipv6 route 2001:0DB8:ACAD:1BFF::1:0/112  2001:0DB8:ACAD:1BFF::2 
+ipv6 route 2001:0DB8:ACAD:1BFF::2:0/112  2001:0DB8:ACAD:1BFF::2  
+ipv6 route 2001:0DB8:ACAD:1BFF::4:0/112  2001:0DB8:ACAD:1BFF::2 
+
+
+
+
+----FRANCISCO BELTRAO----
+enable
+conf t
+hostname R-FB-GA
+interface fa0/0
+description LAN-Filial1
+ip address 200.200.27.65 255.255.255.224
+ipv6 address 2001:DB8:ACAD:1B01::1/64
+ipv6 address  FE80::1 link-local
+no shutdown
+interface serial 0/0/0
+description WAN-FB-IT
+clock rate 56000
+ip address 200.200.27.233 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::2:1/112
+no shutdown
+interface serial 0/0/1
+description WAN-VIT-FB
+ip address 200.200.27.230 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::1:2/112
+no shutdown
+exit
+ipv6 unicast-routing 
+ip route 200.200.27.0    255.255.255.192  200.200.27.234  
+ip route 200.200.27.224  255.255.255.252  200.200.27.234   
+ip route 200.200.27.236  255.255.255.252  200.200.27.234  
+ip route 200.200.27.240  255.255.255.252  200.200.27.234  
+ip route 200.200.27.96   255.255.255.224  200.200.27.234 
+ipv6 route 2001:0DB8:ACAD:1B00::/64      2001:0DB8:ACAD:1BFF::2:2 
+ipv6 route 2001:0DB8:ACAD:1B02::/64      2001:0DB8:ACAD:1BFF::2:2 
+ipv6 route 2001:0DB8:ACAD:1BFF::0:0/112  2001:0DB8:ACAD:1BFF::2:2 
+ipv6 route 2001:0DB8:ACAD:1BFF::3:0/112  2001:0DB8:ACAD:1BFF::2:2 
+ipv6 route 2001:0DB8:ACAD:1BFF::4:0/112  2001:0DB8:ACAD:1BFF::2:2 
+
+
+
+----CORONEL VIVIDA----
+enable
+conf t
+hostname R-CV-GA
+interface fa0/0
+description LAN-FILIAL2
+ip address 200.200.27.97 255.255.255.224
+ipv6 address 2001:DB8:ACAD:1B02::1/64
+ipv6 address  FE80::1 link-local
+no shutdown
+interface fa0/1
+description WAN-IT-CV
+ip address 200.200.27.242 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::4:2/112
+no shutdown
+exit
+ipv6 unicast-routing 
+ip route 200.200.27.0    255.255.255.192  200.200.27.241      
+ip route 200.200.27.64   255.255.255.224  200.200.27.241      
+ip route 200.200.27.224  255.255.255.252  200.200.27.241      
+ip route 200.200.27.228  255.255.255.252  200.200.27.241      
+ip route 200.200.27.232  255.255.255.252  200.200.27.241      
+ip route 200.200.27.236  255.255.255.252  200.200.27.241      
+ipv6 route 2001:0DB8:ACAD:1B00::/64      2001:0DB8:ACAD:1BFF::4:1     
+ipv6 route 2001:0DB8:ACAD:1B01::/64      2001:0DB8:ACAD:1BFF::4:1     
+ipv6 route 2001:0DB8:ACAD:1BFF::0/112  2001:0DB8:ACAD:1BFF::4:1     
+ipv6 route 2001:0DB8:ACAD:1BFF::1:0/112  2001:0DB8:ACAD:1BFF::4:1     
+ipv6 route 2001:0DB8:ACAD:1BFF::2:0/112  2001:0DB8:ACAD:1BFF::4:1     
+ipv6 route 2001:0DB8:ACAD:1BFF::3:0/112  2001:0DB8:ACAD:1BFF::4:1     
+
+
+----VITORINO----
+enable
+conf t
+hostname R-VIT-GA
+interface serial 0/0/0
+description WAN-VIT-FB
+clock rate 56000
+ip address 200.200.27.229 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::1:1/112
+no shutdown
+interface serial 0/0/1
+description WAN-PB-VIT
+ip address 200.200.27.226 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::0:2/112
+no shutdown
+exit
+ipv6 unicast-routing 
+ 
+ip route  200.200.27.0    255.255.255.192  200.200.27.230  
+ip route  200.200.27.64   255.255.255.224  200.200.27.230  
+ip route  200.200.27.232  255.255.255.252  200.200.27.230  
+ip route  200.200.27.236  255.255.255.252  200.200.27.230  
+ip route 200.200.27.96   255.255.255.224  200.200.27.230  
+ip route 200.200.27.240  255.255.255.252  200.200.27.230 
+
+ipV6 route 2001:0DB8:ACAD:1B00::/64      2001:0DB8:ACAD:1BFF::1:2 
+ipV6 route 2001:0DB8:ACAD:1B01::/64      2001:0DB8:ACAD:1BFF::1:2 
+ipV6 route 2001:0DB8:ACAD:1B02::/64      2001:0DB8:ACAD:1BFF::1:2 
+ipV6 route 2001:0DB8:ACAD:1BFF::2:0/112  2001:0DB8:ACAD:1BFF::1:2 
+ipV6 route 2001:0DB8:ACAD:1BFF::3:0/112  2001:0DB8:ACAD:1BFF::1:2 
+ipV6 route 2001:0DB8:ACAD:1BFF::4:0/112  2001:0DB8:ACAD:1BFF::1:2 
+
+
+
+
+
+----ITAPEJARA----
+enable
+conf t
+hostname R-ITA-GA
+interface serial 0/0/0
+description WAN-PB-IT
+clock rate 56000
+ip address 200.200.27.237 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::3:1/112
+no shutdown
+interface serial 0/0/1
+description WAN-FB-IT
+ip address 200.200.27.234 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::2:2/112
+no shutdown
+interface fa 0/1
+description WAN-IT-CV
+ip address 200.200.27.241 255.255.255.252
+ipv6 address 2001:DB8:ACAD:1BFF::4:1/112
+no shutdown
+exit
+ipv6 unicast-routing 
+ip route  200.200.27.0    255.255.255.192  200.200.27.238  
+ip route  200.200.27.64   255.255.255.224  200.200.27.238  
+ip route  200.200.27.224  255.255.255.252  200.200.27.238  
+ip route  200.200.27.228  255.255.255.252  200.200.27.238  
+ip route  200.200.27.96   255.255.255.224  200.200.27.242  
+ipv6 route  2001:0DB8:ACAD:1B00::/64      2001:0DB8:ACAD:1BFF::3:2 
+ipv6 route  2001:0DB8:ACAD:1B01::/64      2001:0DB8:ACAD:1BFF::3:2 
+ipv6 route  2001:0DB8:ACAD:1B02::/64      2001:0DB8:ACAD:1BFF::4:2  
+ipv6 route  2001:0DB8:ACAD:1BFF::0/112  2001:0DB8:ACAD:1BFF::3:2 
+ipv6 route  2001:0DB8:ACAD:1BFF::1:0/112  2001:0DB8:ACAD:1BFF::3:2 
+
+
+**********************Segurança***********************
+enable
+configure terminal
+security passwords min-length 10
+login block-for 120 attempts 3 within 60
+line vty 0 4
+exec-timeout 5
+exit
+service password-encryption
+enable secret @dmin-gustavo
+login
+line con 0
+password @Cons-gustavo
+login
+exit
+banner motd #
+--------------------------------------------------------------------------
+|                                                                        |
+|                          Roteador Pato Branco                          |
+|                                                                        |
+|               ATENÇÃO Acesso Restrito a pessoas autorizadas!           |
+|                                                                        |
+|          Administrador: Gustavo Alexandre Tuchlinowicz Nunes           |
+|		  (gugonunes@hotmail.com)                                        |
+|                                                                        |
+--------------------------------------------------------------------------
+#
+ip domain name gustavo.nunes.com.br
+crypto key generate rsa general-keys modulus 1024
+username gustavo secret ssh@Network1ng 
+line vty 0 15
+login local
+transport input ssh
+
+
+
+***************TESTES***********************
+ping 200.200.27.1
+ping 200.200.27.2
+ping 200.200.27.3
+ping 200.200.27.4
+ping 200.200.27.65
+ping 200.200.27.66
+ping 200.200.27.67
+ping 200.200.27.68
+ping 200.200.27.97
+ping 200.200.27.98
+ping 200.200.27.99
+ping 200.200.27.100
+ping 200.200.27.225
+ping 200.200.27.226
+ping 200.200.27.229
+ping 200.200.27.230
+ping 200.200.27.233
+ping 200.200.27.234
+ping 200.200.27.237
+ping 200.200.27.238
+ping 200.200.27.241
+ping 200.200.27.242
+ping 2001:0DB8:ACAD:1B00::1
+ping 2001:0DB8:ACAD:1B01::1
+ping 2001:0DB8:ACAD:1B01::3
+ping 2001:0DB8:ACAD:1B01::4
+ping 2001:0DB8:ACAD:1B02::1
+ping 2001:0DB8:ACAD:1B02::3
+ping 2001:0DB8:ACAD:1B02::4
+ping 2001:0DB8:ACAD:1BFF::1
+ping 2001:0DB8:ACAD:1BFF::2
+ping 2001:0DB8:ACAD:1BFF::1:1
+ping 2001:0DB8:ACAD:1BFF::1:2
+ping 2001:0DB8:ACAD:1BFF::2:1
+ping 2001:0DB8:ACAD:1BFF::2:2
+ping 2001:0DB8:ACAD:1BFF::3:1
+ping 2001:0DB8:ACAD:1BFF::3:2
+ping 2001:0DB8:ACAD:1BFF::4:1
+ping 2001:0DB8:ACAD:1BFF::4:2
